@@ -33,6 +33,31 @@ and reputable neuroscience/ML venues:
 
 ---
 
+## Example figures
+
+<table>
+<tr>
+<td><img src="examples/figures/fig_example_pipeline.png" width="340"/><br/><sub>Pipeline with claim gate</sub></td>
+<td><img src="examples/figures/fig_example_timeline.png" width="340"/><br/><sub>Gantt timeline</sub></td>
+</tr>
+<tr>
+<td><img src="examples/figures/fig_example_bar.png" width="220"/><br/><sub>Cohort sizes</sub></td>
+<td><img src="examples/figures/fig_example_governance.png" width="340"/><br/><sub>Data governance wall</sub></td>
+</tr>
+<tr>
+<td><img src="examples/figures/fig_program_timeline.png" width="340"/><br/><sub>Program critical path (real project)</sub></td>
+<td><img src="examples/figures/fig_pipeline.png" width="340"/><br/><sub>Benchmark pipeline (real project)</sub></td>
+</tr>
+<tr>
+<td><img src="examples/figures/fig_block_diagram.png" width="340"/><br/><sub>Wearable signal chain</sub></td>
+<td><img src="examples/figures/fig_checkpoint_loop.png" width="340"/><br/><sub>Checkpoint state machine</sub></td>
+</tr>
+</table>
+
+See [`examples/figures/`](examples/figures/) for all 22 figures.
+
+---
+
 ## Quick start
 
 ```bash
