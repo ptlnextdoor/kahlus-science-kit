@@ -1,0 +1,70 @@
+\documentclass[11pt,letterpaper]{article}
+\input{preamble}
+
+\begin{document}
+
+\kahlustitle%
+  {Example}%
+  {Example Project --- Kahlus House Style}%
+  {A minimal working document using preamble.tex}%
+  {Technical Project Plan}%
+  {kahlus-science-kit repository (github.com/aayushyapatel/kahlus-science-kit).}
+
+\textbf{Abstract.}
+This template demonstrates every structural element of the Kahlus LaTeX house style:
+title block, abstract, numbered sections, a figure with a caption, a booktabs table,
+and a reference list. Compile twice with \texttt{pdflatex} to resolve page counts.
+
+\rule{\textwidth}{0.4pt}
+
+\section{Purpose}
+
+This document is a minimal shell. Replace the content of each section with your own.
+The preamble sets Times New Roman, inward ticks (when using \texttt{pgfplots}),
+booktabs rules, \texttt{siunitx} for units, and the standard header/footer.
+
+Key rules:
+\begin{itemize}
+  \item One accent color per figure (\texttt{\#8c1515} in Matplotlib, or dark red in TikZ).
+  \item No text over data.
+  \item Every axis has a label and a unit.
+  \item Claim gate in the pipeline diagram is always accented.
+\end{itemize}
+
+\section{Example Figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.88\textwidth]{../output/figures/fig_example_pipeline.png}
+\caption{Pipeline overview. Boxes are processing stages; the accented gate at the right
+         is the conjunctive claim gate.}
+\end{figure}
+
+\section{Example Table}
+
+\begin{table}[H]
+\centering
+\caption{Project index. Every project has one document in its folder.}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{llll}
+\toprule
+\textbf{ID} & \textbf{Project} & \textbf{Type} & \textbf{Spend} \\
+\midrule
+P01 & Benchmark (software) & Science  & \$0 \\
+P02 & Pretraining campaign & Compute  & \$0 \\
+P03 & Wearable bench       & Hardware & \$2{,}220 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section{References}
+\rule{\textwidth}{0.4pt}
+{\small
+\begin{enumerate}[label={[\arabic*]},leftmargin=2em,itemsep=0pt]
+  \item Author et al., Title of the paper, \textit{Journal Name}, vol.~X, pp.~Y--Z, year.
+  \item kahlus-science-kit repository,
+        \href{https://github.com/aayushyapatel/kahlus-science-kit}%
+        {github.com/aayushyapatel/kahlus-science-kit}.
+\end{enumerate}}
+
+\end{document}
