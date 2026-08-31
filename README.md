@@ -15,6 +15,67 @@ documents — the exact stack we use for the Kahlus research program.
 | `docx/helpers.py` | Reusable DOCX helpers (title block, hrule, table, figure, etc.) |
 | `examples/` | Runnable end-to-end demos |
 | `docs/workflow.md` | How everything fits together |
+| `research/storm_bridge.py` | **Stanford STORM → this pipeline.** Parses a STORM run, audits the evidence base, emits LaTeX/Markdown |
+| `research/test_storm_bridge.py` | 16 assert-based checks, no framework, no network |
+| `skills/humanize.md` | Strips the statistical fingerprint of machine-written prose |
+| `skills/ai-check.md` | Scores text A–I on the signals detectors actually measure |
+| `skills/scientific-figures.md` | Figure genre selection and layout rules |
+
+---
+
+## Research → document: the STORM bridge
+
+Stanford's [STORM](https://github.com/stanford-oval/storm) (MIT licensed) does retrieval and
+multi-perspective outlining. It writes a cited article and stops there — the package contains
+**zero** matplotlib imports and no typesetting.
+
+This kit is the opposite shape: house figure style, LaTeX preamble, DOCX builder, prose-quality
+skills, and no research stage. So they compose:
+
+```
+STORM                    storm_bridge.py              this kit
+retrieval + outline  ->  parse, audit, emit       ->  figures / LaTeX / DOCX
+```
+
+```bash
+pip install knowledge-storm            # STORM is a dependency, not vendored
+python research/storm_bridge.py --storm-output ./results/my_topic --figures
+```
+
+Output:
+
+```
+  topic      cold plasma wound therapy
+  sections   3
+  words      84
+  sources    6 (4 peer-reviewed, 67%)
+  domains    3
+  ⚠ 2 retrieved sources are never cited in the text
+```
+
+### The source audit is the point
+
+STORM retrieves from the open web, so a run mixes journal articles with blog posts. The bridge
+makes that ratio explicit before you build a document on top of it:
+
+- **peer-reviewed fraction** — classified by domain (doi.org, arXiv, PubMed, IEEE, AIAA, ASME, …)
+- **orphan sources** — retrieved but never cited in the body, a sign the draft is thinner than its
+  reference list implies
+- **domain concentration** — rendered as a house-style figure, cardinal for peer-reviewed, gray for
+  everything else
+
+`[n]` markers become `\cite{srcN}` against a generated `thebibliography`, and the emitted `.tex`
+compiles against `latex/preamble.tex` unmodified.
+
+### The prose is machine-written and the tooling says so
+
+The bridge writes that warning into the header of every file it emits. Run `skills/humanize.md`
+over the draft, then `skills/ai-check.md` to score what survived. Neither is a laundering step:
+**a citation still has to support the sentence it's attached to, and only a human can check that.**
+
+```bash
+python research/test_storm_bridge.py     # 16 checks, offline
+```
 
 ---
 
